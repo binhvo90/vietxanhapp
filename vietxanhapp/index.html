@@ -2,11 +2,457 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./login.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Việt Xanh</title>
+    <title>Việt Xanh APP - Trang thông tin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sidebar-bg: #2f3640;
+        --sidebar-bg-soft: #3a4049;
+        --sidebar-text: #d0d7df;
+        --sidebar-muted: #aab3be;
+        --sidebar-active: #1182ea;
+        --main-bg: #f0f1f3;
+        --card-border: #d7dadd;
+        --white: #fff;
+        --text: #242c35;
+        --muted: #6d7884;
+        --teal: #1ea5bc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        color: var(--text);
+        background: var(--main-bg);
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: 248px 1fr;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand {
+        height: 58px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .brand-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #d6d6d6;
+        color: #4a4a4a;
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+      }
+
+      .brand-name {
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+
+      .user-mini {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #bfc6cf, #8a919b);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .user-info strong {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .user-info span {
+        font-size: 14px;
+        color: var(--sidebar-muted);
+      }
+
+      .menu {
+        padding: 10px 8px;
+        overflow: auto;
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--sidebar-text);
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 1;
+        padding: 11px 12px;
+        border-radius: 4px;
+        margin-bottom: 6px;
+      }
+
+      .menu-item .chev {
+        margin-left: auto;
+        color: #bac2cd;
+      }
+
+      .menu-item.active {
+        background: var(--sidebar-active);
+        color: var(--white);
+        font-weight: 700;
+      }
+
+      .menu-item.soft-active {
+        background: var(--sidebar-bg-soft);
+      }
+
+      .main {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topbar {
+        background: #ededee;
+        border-bottom: 1px solid #d0d3d6;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+      }
+
+      .top-left,
+      .top-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #66707b;
+        font-size: 14px;
+      }
+
+      .page {
+        padding: 16px 10px;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: 42px;
+        font-weight: 500;
+      }
+
+      .home-link {
+        float: right;
+        color: #0075f2;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: -50px;
+      }
+
+      .card {
+        background: #efefef;
+        border: 1px solid var(--card-border);
+        border-radius: 4px;
+        margin-bottom: 14px;
+      }
+
+      .card-header {
+        border-bottom: 1px solid var(--card-border);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .card-title {
+        font-size: 34px;
+        font-weight: 500;
+      }
+
+      .card-tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .icon-btn {
+        width: 34px;
+        height: 34px;
+        border: 1px solid #cfd4da;
+        background: #f5f5f5;
+        color: #59616b;
+      }
+
+      .search {
+        height: 34px;
+        width: 150px;
+        border: 1px solid #ccd2d8;
+        padding: 0 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--card-border);
+        padding: 11px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        font-weight: 700;
+      }
+
+      .col-stt {
+        width: 45px;
+      }
+
+      .col-action {
+        width: 150px;
+      }
+
+      .notice-line {
+        margin-top: 4px;
+        color: #253748;
+      }
+
+      .view-btn {
+        background: var(--teal);
+        color: #fff;
+        border: 0;
+        border-radius: 8px;
+        height: 38px;
+        min-width: 96px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .message {
+        margin: 10px;
+        border: 1px solid var(--card-border);
+        border-radius: 6px;
+        background: #f8f8f8;
+      }
+
+      .message-head,
+      .message-body {
+        padding: 12px 14px;
+      }
+
+      .message-head {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .app-badge {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 2px solid #3cae47;
+        display: grid;
+        place-items: center;
+        color: #1a8c31;
+      }
+
+      .message-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #0066df;
+      }
+
+      .message-time {
+        font-size: 16px;
+        color: var(--muted);
+      }
+
+      .message-body {
+        font-size: 15px;
+      }
+
+      @media (max-width: 1100px) {
+        .app {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p>Đang chuyển đến trang đăng nhập...</p>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">A</div>
+          <div class="brand-name">Việt Xanh APP</div>
+        </div>
+
+        <div class="user-mini">
+          <div class="avatar"></div>
+          <div class="user-info">
+            <strong>Võ Quốc Bình</strong>
+            <span>VX-1377</span>
+          </div>
+        </div>
+
+        <nav class="menu">
+          <a class="menu-item active" href="#">🏠 Trang chính</a>
+          <a class="menu-item" href="#">📝 Phản ánh - Góp ý</a>
+          <a class="menu-item" href="#">🧾 Đăng ký khách, nhà thầu</a>
+          <a class="menu-item soft-active" href="#">📚 Hệ thống đào tạo</a>
+          <a class="menu-item" href="#">👤 Thông tin cá nhân</a>
+          <a class="menu-item" href="#">💸 Tạm ứng lương</a>
+          <a class="menu-item" href="#">📅 Chấm công <span class="chev">❮</span></a>
+          <a class="menu-item" href="#">💳 Xem bảng lương</a>
+          <a class="menu-item" href="#">🧪 Nhật ký hệ thống</a>
+          <a class="menu-item" href="#">⛽ Cung cấp nhiên liệu <span class="chev">❮</span></a>
+          <a class="menu-item" href="#">🚚 Phiếu ra cổng <span class="chev">❮</span></a>
+          <a class="menu-item" href="#">🗳️ Chương trình khảo sát</a>
+          <a class="menu-item" href="#">🚛 GNVC Kế hoạch sửa chữa</a>
+          <a class="menu-item" href="#">⚙️ Kế hoạch sửa chữa</a>
+          <a class="menu-item" href="#">🛡️ Tuần tra bảo vệ</a>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="top-left">
+            <span>≡</span>
+            <span>Home</span>
+          </div>
+          <div class="top-right">
+            <div class="avatar"></div>
+            <span>VX-1377 ▼</span>
+          </div>
+        </div>
+
+        <div class="page">
+          <h1>Trang thông tin</h1>
+          <a class="home-link" href="#">Home</a>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="card-title">🗂️ Thông báo</div>
+              <div class="card-tools">
+                <button class="icon-btn">☷</button>
+                <input class="search" placeholder="Tìm thông báo" />
+                <button class="icon-btn">🔍</button>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th class="col-stt">STT</th>
+                  <th>Thông báo</th>
+                  <th class="col-action">Xem</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    THÔNG BÁO CHUẨN BỊ NGHỈ TẾT NGUYÊN ĐÁN 2026
+                    <div class="notice-line">Số: 24/2026/MTVX-TB</div>
+                    <div class="notice-line">Ngày ban hành: 12/02/2026</div>
+                  </td>
+                  <td><button class="view-btn">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    THÔNG BÁO THƯỞNG TẾT VÀ CHẾ ĐỘ LÀM TẾT 2026
+                    <div class="notice-line">Số: 23/2026/MTVX-TB</div>
+                    <div class="notice-line">Ngày ban hành: 03/02/2026</div>
+                  </td>
+                  <td><button class="view-btn">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>
+                    THÔNG BÁO NGHỈ TẾT 2026
+                    <div class="notice-line">Số: 22/2026/MTVX-TB</div>
+                    <div class="notice-line">Ngày ban hành: 27/01/2026</div>
+                  </td>
+                  <td><button class="view-btn">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    BỔ NHIỆM ÔNG LÊ XUÂN HOÀNG
+                    <div class="notice-line">Số: 34/2026/MTVX-QĐ</div>
+                    <div class="notice-line">Ngày ban hành: 22/01/2026</div>
+                  </td>
+                  <td><button class="view-btn">Xem</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="card-title">➤ Tin nhắn</div>
+            </div>
+
+            <article class="message">
+              <div class="message-head">
+                <div class="app-badge">💚</div>
+                <div>
+                  <div class="message-title">Viet Xanh APP</div>
+                  <div class="message-time">07:59 25/02/2026</div>
+                </div>
+              </div>
+              <div class="message-body">⏲️ Thông tin chấm công: 🗃️ VÀO 07h59m9 25/02/2026 Chấm tại máy MCC Bảo vệ VX01 - Vào</div>
+            </article>
+
+            <article class="message">
+              <div class="message-head">
+                <div class="app-badge">💚</div>
+                <div>
+                  <div class="message-title">Viet Xanh APP</div>
+                  <div class="message-time">17:13 24/02/2026</div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
