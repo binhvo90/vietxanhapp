@@ -59,8 +59,7 @@ form.addEventListener('submit', (event) => {
     localStorage.removeItem(STORAGE_KEY);
   }
 
-  formMessage.textContent = 'Đăng nhập thành công (demo).';
-  formMessage.classList.add('success');
+  window.location.href = './index.html';
 });
 
 forgotPin.addEventListener('click', (event) => {
