@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thư phản ánh, góp ý</title>
+    <style>
+      :root {
+        --teal: #1aa6be;
+        --border: #d7dce1;
+        --bg: #eceff2;
+        --text: #2d3640;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: #f2f4f6;
+      }
+
+      .page {
+        padding: 8px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 6px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 29px;
+        font-weight: 500;
+      }
+
+      .breadcrumb {
+        font-size: 12px;
+        color: #3f6fb0;
+      }
+
+      .panel {
+        border: 1px solid var(--border);
+        background: #fff;
+        margin-bottom: 10px;
+      }
+
+      .panel-title {
+        background: var(--teal);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 7px 10px;
+      }
+
+      .guide {
+        background: #209eb7;
+        color: #fff;
+        padding: 12px;
+        line-height: 1.5;
+        font-size: 12px;
+        min-height: 115px;
+      }
+
+      .form-wrap {
+        background: #f6f7f9;
+        padding: 12px;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .label {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #c6ced7;
+        background: #e8edf2;
+        border-radius: 2px;
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .input-icon {
+        position: relative;
+      }
+
+      .input-icon::before {
+        content: "🕘";
+        position: absolute;
+        left: 8px;
+        top: 7px;
+        font-size: 12px;
+        opacity: 0.7;
+      }
+
+      .input-icon input {
+        padding-left: 26px;
+      }
+
+      textarea {
+        min-height: 70px;
+        resize: vertical;
+      }
+
+      .upload {
+        background: #eef1f4;
+        border: 1px solid #c6ced7;
+        min-height: 80px;
+        display: grid;
+        place-items: center;
+        color: #2374b8;
+        font-size: 11px;
+      }
+
+      .btn {
+        background: #1aa6be;
+        color: #fff;
+        border: 0;
+        border-radius: 2px;
+        padding: 6px 12px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .upload .btn {
+        margin-bottom: 6px;
+      }
+
+      .actions {
+        padding: 8px 0 0 0;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+
+      .table th,
+      .table td {
+        border-top: 1px solid var(--border);
+        padding: 7px;
+      }
+
+      .table th {
+        text-align: left;
+      }
+
+      .status {
+        text-align: right;
+      }
+
+      .empty {
+        height: 220px;
+        background: #f8f9fb;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <h1>Thư phản ánh, góp ý</h1>
+        <div class="breadcrumb">Home / Thư phản ánh, góp ý</div>
+      </div>
+
+      <section class="panel">
+        <div class="guide">
+          <strong>Cảm ơn bạn đã gửi phản ánh, góp ý đến BP.HCNS</strong><br />
+          Nhằm cải thiện quy trình, nội quy, tác phong làm việc, BP.HCNS mong muốn nhận được nhiều các góp ý, phản ánh của tất cả các cá nhân sử dụng làm việc tại công ty.<br />
+          Các phản ánh gửi cần phản ánh các nội dung sau:<br />
+          - Phản ánh nhân sự vi phạm nội quy, an toàn, quy định.<br />
+          - Phản ánh các vấn đề tiêu cực trong công việc.<br />
+          - Góp ý hoàn thiện quy trình làm việc.<br />
+          - Và các vấn đề khác.<br />
+          Toàn bộ phản ánh của bạn là BẢO MẬT TUYỆT ĐỐI, được truyền thẳng cho BLĐ. Tuyệt đối không cung cấp ra bên ngoài.<br />
+          Các góp ý phản ánh tích cực góp phần xây dựng sẽ được ban lãnh đạo xem xét khen thưởng.
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">Thư phản ánh - góp ý</div>
+        <div class="form-wrap">
+          <div class="row">
+            <div class="label">Ngày góp ý</div>
+            <div class="input-icon"><input value="25/02/2026" /></div>
+          </div>
+          <div class="row">
+            <div class="label">Tên nhân sự</div>
+            <input value="Võ Quốc Bình" />
+          </div>
+          <div class="row">
+            <div class="label">Bộ phận</div>
+            <input value="IT" />
+          </div>
+          <div class="row" style="align-items: start">
+            <div class="label">Nội dung góp ý</div>
+            <textarea placeholder="Viết phản ánh, góp ý ..."></textarea>
+          </div>
+          <div class="row" style="align-items: start">
+            <div class="label">Hình ảnh minh chứng</div>
+            <div class="upload">
+              <div>
+                <button class="btn" type="button">Gửi hình ảnh</button><br />
+                <span>Có thể gửi 10 tấm cùng lúc</span>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn" type="button">Gửi đơn</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title" style="background:#f5f7f9;color:#3e4c59;font-weight:500;">Các phản ánh của bạn gần đây</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="width:20px">#</th>
+              <th>Nội dung</th>
+              <th class="status">Đã xử lý</th>
+            </tr>
+          </thead>
+        </table>
+        <div class="empty"></div>
+      </section>
+    </div>
+  </body>
+</html>
