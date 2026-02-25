@@ -1,0 +1,19 @@
+<svg width="760" height="520" viewBox="0 0 760 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="760" height="520" fill="#F2F6FD"/>
+  <ellipse cx="340" cy="480" rx="170" ry="20" fill="#D9E4F6"/>
+  <rect x="130" y="110" width="420" height="250" rx="8" fill="#E8EEF7" stroke="#CED8E7" stroke-width="6"/>
+  <rect x="170" y="145" width="340" height="180" rx="6" fill="#FFFFFF"/>
+  <rect x="280" y="358" width="120" height="70" fill="#D9E4F6"/>
+  <rect x="220" y="428" width="240" height="12" rx="6" fill="#3A84F8"/>
+  <circle cx="250" cy="180" r="40" fill="#CFE0FF"/>
+  <path d="M255 230L355 205L410 300L315 335L255 230Z" fill="#1D2A7A"/>
+  <circle cx="350" cy="280" r="22" fill="#ED4A4A"/>
+  <path d="M208 237L134 278L108 230L182 190L208 237Z" fill="#2F80ED"/>
+  <path d="M360 210C390 180 430 185 455 210L470 225L430 280L385 240L360 210Z" fill="#F4B4AE"/>
+  <path d="M400 170L470 140L494 180L424 210L400 170Z" fill="#ED4A4A"/>
+  <rect x="470" y="130" width="18" height="18" transform="rotate(32 470 130)" fill="#2F80ED"/>
+  <path d="M246 220C286 196 328 192 372 210L375 237C328 218 282 223 246 247V220Z" fill="#F6B7B0"/>
+  <circle cx="610" cy="150" r="34" fill="#CFE0FF"/>
+  <circle cx="112" cy="356" r="44" fill="#CFE0FF"/>
+  <circle cx="566" cy="300" r="20" fill="#DCE8FA"/>
+</svg>
