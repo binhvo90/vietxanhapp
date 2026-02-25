@@ -334,6 +334,60 @@
         font-size: 15px;
       }
 
+      .popup-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(17, 23, 31, 0.48);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 18px;
+      }
+
+      .popup-overlay.show {
+        display: flex;
+      }
+
+      .popup {
+        width: min(620px, 100%);
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .popup-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .popup-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1f2a37;
+      }
+
+      .popup-close {
+        border: 1px solid #c9d0d8;
+        background: #f7f8f9;
+        width: 30px;
+        height: 30px;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .popup-content {
+        padding: 14px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
       @media (max-width: 1100px) {
         .layout {
           grid-template-columns: 1fr;
@@ -433,7 +487,11 @@
                     <div class="notice-meta">Số: 24/2026/MTVX-TB</div>
                     <div class="notice-meta">Ngày ban hành: 12/02/2026</div>
                   </td>
-                  <td><button class="btn-view">Xem</button></td>
+                  <td>
+                    <button class="btn-view" data-title="THÔNG BÁO CHUẨN BỊ NGHỈ TẾT NGUYÊN ĐÁN 2026" data-detail="Kính gửi toàn thể CBNV,\n\nCông ty thông báo kế hoạch chuẩn bị nghỉ Tết Nguyên đán 2026. Đề nghị các bộ phận hoàn tất bàn giao công việc trước ngày 10/02/2026 và thực hiện đúng quy định trực Tết.">
+                      Xem
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -442,7 +500,11 @@
                     <div class="notice-meta">Số: 23/2026/MTVX-TB</div>
                     <div class="notice-meta">Ngày ban hành: 03/02/2026</div>
                   </td>
-                  <td><button class="btn-view">Xem</button></td>
+                  <td>
+                    <button class="btn-view" data-title="THÔNG BÁO THƯỞNG TẾT VÀ CHẾ ĐỘ LÀM TẾT 2026" data-detail="Công ty áp dụng chính sách thưởng Tết theo đánh giá hiệu quả công việc.\n\nCác trường hợp làm việc trong dịp Tết được tính hệ số theo quy định hiện hành của công ty.">
+                      Xem
+                    </button>
+                  </td>
                 </tr>
                 <tr>
                   <td>3</td>
@@ -451,7 +513,7 @@
                     <div class="notice-meta">Số: 22/2026/MTVX-TB</div>
                     <div class="notice-meta">Ngày ban hành: 27/01/2026</div>
                   </td>
-                  <td><button class="btn-view">Xem</button></td>
+                  <td><button class="btn-view" data-title="THÔNG BÁO NGHỈ TẾT 2026" data-detail="">Xem</button></td>
                 </tr>
                 <tr>
                   <td>4</td>
@@ -460,7 +522,7 @@
                     <div class="notice-meta">Số: 34/2026/MTVX-QĐ</div>
                     <div class="notice-meta">Ngày ban hành: 22/01/2026</div>
                   </td>
-                  <td><button class="btn-view">Xem</button></td>
+                  <td><button class="btn-view" data-title="BỔ NHIỆM ÔNG LÊ XUÂN HOÀNG" data-detail="">Xem</button></td>
                 </tr>
               </tbody>
             </table>
@@ -498,5 +560,52 @@
         </section>
       </main>
     </div>
+
+    <div class="popup-overlay" id="noticePopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+      <div class="popup">
+        <div class="popup-head">
+          <h3 class="popup-title" id="popupTitle">Chi tiết thông báo</h3>
+          <button class="popup-close" id="popupClose" aria-label="Đóng">✕</button>
+        </div>
+        <div class="popup-content" id="popupContent"></div>
+      </div>
+    </div>
+
+    <script>
+      const popupOverlay = document.getElementById("noticePopup");
+      const popupTitle = document.getElementById("popupTitle");
+      const popupContent = document.getElementById("popupContent");
+      const popupClose = document.getElementById("popupClose");
+      const viewButtons = document.querySelectorAll(".btn-view");
+
+      function closePopup() {
+        popupOverlay.classList.remove("show");
+      }
+
+      viewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const title = button.dataset.title || "Chi tiết thông báo";
+          const detail = (button.dataset.detail || "").trim();
+
+          popupTitle.textContent = title;
+          popupContent.textContent = detail || "Popup chưa có dữ liệu";
+          popupOverlay.classList.add("show");
+        });
+      });
+
+      popupClose.addEventListener("click", closePopup);
+
+      popupOverlay.addEventListener("click", (event) => {
+        if (event.target === popupOverlay) {
+          closePopup();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closePopup();
+        }
+      });
+    </script>
   </body>
 </html>
