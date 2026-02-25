@@ -2,11 +2,501 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./login.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Việt Xanh</title>
+    <title>Việt Xanh APP - Trang thông tin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sidebar-bg: #2f3640;
+        --sidebar-text: #d4dae1;
+        --sidebar-muted: #aeb8c4;
+        --sidebar-item-hover: #3a414b;
+        --sidebar-active: #0f7ff0;
+        --main-bg: #f3f4f6;
+        --topbar-bg: #eceeef;
+        --border: #d8dde3;
+        --text: #283240;
+        --muted: #6f7c89;
+        --btn-teal: #1fa4bc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        color: var(--text);
+        background: var(--main-bg);
+      }
+
+      .layout {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+      }
+
+      .sidebar {
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 56px;
+        padding: 0 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .brand-logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #d6d9de;
+        color: #4d5661;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .brand-title {
+        font-size: 33px;
+        font-weight: 500;
+      }
+
+      .sidebar-user {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #d3d8df, #9ca5b1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .user-name {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        color: #e6ebf1;
+      }
+
+      .user-code {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: var(--sidebar-muted);
+      }
+
+      .menu {
+        padding: 10px 8px 14px;
+        overflow: auto;
+      }
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        text-decoration: none;
+        color: var(--sidebar-text);
+        font-size: 15px;
+        padding: 10px 12px;
+        margin-bottom: 5px;
+        border-radius: 3px;
+        white-space: nowrap;
+      }
+
+      .menu-item:hover {
+        background: var(--sidebar-item-hover);
+      }
+
+      .menu-item.active {
+        background: var(--sidebar-active);
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .menu-item.sub-active {
+        background: #454d57;
+      }
+
+      .menu-item .right {
+        margin-left: auto;
+        opacity: 0.85;
+      }
+
+      .main {
+        min-width: 0;
+      }
+
+      .topbar {
+        height: 56px;
+        background: var(--topbar-bg);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        font-size: 14px;
+        color: #667380;
+      }
+
+      .topbar-group {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .topbar .avatar {
+        width: 30px;
+        height: 30px;
+      }
+
+      .content {
+        padding: 16px 10px;
+      }
+
+      .content-title {
+        margin: 0 0 18px;
+        font-size: 40px;
+        font-weight: 500;
+      }
+
+      .top-right-link {
+        float: right;
+        margin-top: -48px;
+        color: #0072ee;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .panel {
+        background: #f1f1f1;
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        margin-bottom: 14px;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .panel-title {
+        margin: 0;
+        font-size: 33px;
+        font-weight: 500;
+      }
+
+      .head-tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .tool-btn,
+      .search-input {
+        height: 32px;
+        border: 1px solid #cfd5dc;
+        background: #f7f8f9;
+        color: #5f6b77;
+      }
+
+      .tool-btn {
+        width: 32px;
+        cursor: pointer;
+      }
+
+      .search-input {
+        width: 130px;
+        padding: 0 8px;
+        outline: none;
+      }
+
+      .search-input:focus {
+        border-color: #8eb9e5;
+      }
+
+      .notice-table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      .notice-table th,
+      .notice-table td {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 10px;
+        text-align: left;
+        font-size: 15px;
+        vertical-align: top;
+      }
+
+      .notice-table th {
+        font-weight: 700;
+      }
+
+      .col-index {
+        width: 44px;
+      }
+
+      .col-view {
+        width: 162px;
+      }
+
+      .notice-text {
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .notice-meta {
+        margin-top: 2px;
+      }
+
+      .btn-view {
+        width: 130px;
+        height: 38px;
+        border: 0;
+        border-radius: 4px;
+        background: var(--btn-teal);
+        color: #fff;
+        font-size: 29px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .messages-wrap {
+        padding: 10px;
+      }
+
+      .message-card {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: #f8f8f8;
+        margin-bottom: 12px;
+      }
+
+      .message-head {
+        padding: 10px 12px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .app-icon {
+        width: 42px;
+        height: 42px;
+        border: 1px solid #22a329;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #18a52a;
+        font-size: 21px;
+      }
+
+      .message-name {
+        margin: 0;
+        font-size: 33px;
+        color: #0068df;
+        font-weight: 700;
+      }
+
+      .message-time {
+        margin: 2px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .message-body {
+        padding: 11px 12px 14px;
+        font-size: 15px;
+      }
+
+      @media (max-width: 1100px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          display: none;
+        }
+
+        .content-title {
+          font-size: 32px;
+        }
+
+        .panel-title,
+        .message-name,
+        .btn-view,
+        .brand-title {
+          font-size: 20px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p>Đang chuyển đến trang đăng nhập...</p>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-logo">A</div>
+          <div class="brand-title">Việt Xanh APP</div>
+        </div>
+
+        <div class="sidebar-user">
+          <div class="avatar"></div>
+          <div>
+            <p class="user-name">Võ Quốc Bình</p>
+            <p class="user-code">VX-1377</p>
+          </div>
+        </div>
+
+        <nav class="menu">
+          <a class="menu-item active" href="#">🏠 Trang chính</a>
+          <a class="menu-item" href="#">🗂️ Phản ánh - Góp ý</a>
+          <a class="menu-item" href="#">🧾 Đăng ký khách, nhà thầu</a>
+          <a class="menu-item sub-active" href="#">📚 Hệ thống đào tạo</a>
+          <a class="menu-item" href="#">👤 Thông tin cá nhân</a>
+          <a class="menu-item" href="#">💸 Tạm ứng lương</a>
+          <a class="menu-item" href="#">🗓️ Chấm công <span class="right">❮</span></a>
+          <a class="menu-item" href="#">💳 Xem bảng lương</a>
+          <a class="menu-item" href="#">🧪 Nhật ký hệ thống</a>
+          <a class="menu-item" href="#">⛽ Cung cấp nhiên liệu <span class="right">❮</span></a>
+          <a class="menu-item" href="#">🚚 Phiếu ra cổng <span class="right">❮</span></a>
+          <a class="menu-item" href="#">📋 Chương trình khảo sát</a>
+          <a class="menu-item" href="#">🛠️ GNVC Kế hoạch sửa chữa</a>
+          <a class="menu-item" href="#">⚙️ Kế hoạch sửa chữa</a>
+          <a class="menu-item" href="#">🛡️ Tuần tra bảo vệ</a>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-group">
+            <span>≡</span>
+            <span>Home</span>
+          </div>
+          <div class="topbar-group">
+            <div class="avatar"></div>
+            <span>VX-1377 ▼</span>
+          </div>
+        </header>
+
+        <section class="content">
+          <h1 class="content-title">Trang thông tin</h1>
+          <a class="top-right-link" href="#">Home</a>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">🗃️ Thông báo</h2>
+              <div class="head-tools">
+                <button class="tool-btn" aria-label="Danh sách">☷</button>
+                <input class="search-input" type="text" placeholder="Tìm thông báo" />
+                <button class="tool-btn" aria-label="Tìm kiếm">🔍</button>
+              </div>
+            </div>
+
+            <table class="notice-table">
+              <thead>
+                <tr>
+                  <th class="col-index">STT</th>
+                  <th>Thông báo</th>
+                  <th class="col-view">Xem</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>
+                    <p class="notice-text">THÔNG BÁO CHUẨN BỊ NGHỈ TẾT NGUYÊN ĐÁN 2026</p>
+                    <div class="notice-meta">Số: 24/2026/MTVX-TB</div>
+                    <div class="notice-meta">Ngày ban hành: 12/02/2026</div>
+                  </td>
+                  <td><button class="btn-view">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>
+                    <p class="notice-text">THÔNG BÁO THƯỞNG TẾT VÀ CHẾ ĐỘ LÀM TẾT 2026</p>
+                    <div class="notice-meta">Số: 23/2026/MTVX-TB</div>
+                    <div class="notice-meta">Ngày ban hành: 03/02/2026</div>
+                  </td>
+                  <td><button class="btn-view">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>
+                    <p class="notice-text">THÔNG BÁO NGHỈ TẾT 2026</p>
+                    <div class="notice-meta">Số: 22/2026/MTVX-TB</div>
+                    <div class="notice-meta">Ngày ban hành: 27/01/2026</div>
+                  </td>
+                  <td><button class="btn-view">Xem</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>
+                    <p class="notice-text">BỔ NHIỆM ÔNG LÊ XUÂN HOÀNG</p>
+                    <div class="notice-meta">Số: 34/2026/MTVX-QĐ</div>
+                    <div class="notice-meta">Ngày ban hành: 22/01/2026</div>
+                  </td>
+                  <td><button class="btn-view">Xem</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">➤ Tin nhắn</h2>
+            </div>
+            <div class="messages-wrap">
+              <article class="message-card">
+                <div class="message-head">
+                  <div class="app-icon">💚</div>
+                  <div>
+                    <p class="message-name">Viet Xanh APP</p>
+                    <p class="message-time">07:59 25/02/2026</p>
+                  </div>
+                </div>
+                <div class="message-body">
+                  ⏰ Thông tin chấm công: 🗂️ VÀO 07h59m9 25/02/2026 Chấm tại máy MCC Bảo vệ VX01 - Vào
+                </div>
+              </article>
+
+              <article class="message-card">
+                <div class="message-head">
+                  <div class="app-icon">💚</div>
+                  <div>
+                    <p class="message-name">Viet Xanh APP</p>
+                    <p class="message-time">17:13 24/02/2026</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
