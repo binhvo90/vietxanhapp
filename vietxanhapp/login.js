@@ -60,7 +60,7 @@ form.addEventListener('submit', (event) => {
     localStorage.removeItem(STORAGE_KEY);
   }
 
-  formMessage.textContent = 'Đăng nhập thành công (demo).';
+  formMessage.textContent = 'Đăng nhập thành công (demo 123).';
   formMessage.classList.add('success');
 
   window.setTimeout(() => {
