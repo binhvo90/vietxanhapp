@@ -6,6 +6,7 @@ const formMessage = document.getElementById('formMessage');
 const forgotPin = document.getElementById('forgotPin');
 
 const STORAGE_KEY = 'vietxanh_login_saved';
+const REDIRECT_DELAY_MS = 500;
 
 function restoreSavedLogin() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -59,8 +60,12 @@ form.addEventListener('submit', (event) => {
     localStorage.removeItem(STORAGE_KEY);
   }
 
-  formMessage.textContent = 'Đăng nhập thành công (demo).';
+  formMessage.textContent = 'Đăng nhập thành công (demo 123).';
   formMessage.classList.add('success');
+
+  window.setTimeout(() => {
+    window.location.href = './index.html';
+  }, REDIRECT_DELAY_MS);
 });
 
 forgotPin.addEventListener('click', (event) => {
