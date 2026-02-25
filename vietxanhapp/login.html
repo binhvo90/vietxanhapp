@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập | Việt Xanh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="login-layout">
+      <section class="login-illustration" aria-hidden="true">
+        <img
+          src="./illustration.svg"
+          alt="Minh họa học tập"
+        />
+      </section>
+
+      <section class="login-panel" aria-label="Khu vực đăng nhập">
+        <div class="brand" aria-label="Việt Xanh">
+          <span class="brand-mark"></span>
+          <h1>Việt Xanh</h1>
+        </div>
+
+        <h2>Đăng nhập</h2>
+
+        <form id="loginForm" novalidate>
+          <label for="username">Nhập Mã NS hoặc Số ĐT:</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            inputmode="numeric"
+            placeholder="0933388787"
+            autocomplete="username"
+            required
+          />
+
+          <label for="pin">Mã PIN:</label>
+          <input
+            id="pin"
+            name="pin"
+            type="password"
+            inputmode="numeric"
+            placeholder="••••••"
+            maxlength="6"
+            autocomplete="current-password"
+            required
+          />
+
+          <div class="row-between">
+            <label class="remember-wrap" for="remember">
+              <input id="remember" name="remember" type="checkbox" />
+              <span>Lưu trạng thái đăng nhập</span>
+            </label>
+            <a class="forgot" href="#" id="forgotPin">Quên mã PIN</a>
+          </div>
+
+          <button type="submit">ĐĂNG NHẬP</button>
+          <p id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="./login.js"></script>
+  </body>
+</html>
